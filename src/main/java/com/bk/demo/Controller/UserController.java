@@ -16,7 +16,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/")
+    @RequestMapping("/UserList")
     public List<UserRecord> getAllUser() throws BlogNotFoundException {
         return userService.getAllUsers();
     }

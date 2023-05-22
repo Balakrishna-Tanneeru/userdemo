@@ -4,6 +4,9 @@ import com.bk.demo.Repository.UserRepository;
 import com.bk.demo.exception.BlogAlreadyExistsException;
 import com.bk.demo.exception.BlogNotFoundException;
 import com.bk.demo.model.UserRecord;
+//import io.leangen.graphql.annotations.GraphQLArgument;
+//import io.leangen.graphql.annotations.GraphQLMutation;
+//import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+//@GraphQLApi
 public class UserService {
     @Autowired
     private UserRepository userRepository;
@@ -31,6 +35,15 @@ public class UserService {
         }
         userRepository.save(userRecord);
     }
+
+/*    @GraphQLMutation(name="autenticateUser")
+    public UserRecord authenticateUser(@GraphQLArgument(name="user") UserRecord userRecord) {
+        if (userRepository.existsById(userRecord.getId())) {
+            throw new BlogAlreadyExistsException();
+        }
+        userRepository.save(userRecord);
+        return userRecord;
+    }*/
 
 
     public UserRecord updateUser(UserRecord newAddress, Integer id) {
