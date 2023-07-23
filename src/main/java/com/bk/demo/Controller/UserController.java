@@ -1,8 +1,8 @@
 package com.bk.demo.Controller;
 
 import com.bk.demo.Service.UserService;
-import com.bk.demo.exception.BlogAlreadyExistsException;
-import com.bk.demo.exception.BlogNotFoundException;
+import com.bk.demo.exception.UserAlreadyExistsException;
+import com.bk.demo.exception.UserNotFoundException;
 import com.bk.demo.model.UserRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,12 +17,12 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/UserList")
-    public List<UserRecord> getAllUser() throws BlogNotFoundException {
+    public List<UserRecord> getAllUser() throws UserNotFoundException {
         return userService.getAllUsers();
     }
 
     @RequestMapping(value = "/add-user", method = RequestMethod.POST)
-    public void addUser(@RequestBody UserRecord userRecord) throws BlogAlreadyExistsException {
+    public void addUser(@RequestBody UserRecord userRecord) throws UserAlreadyExistsException {
         userService.addUser(userRecord);
     }
 
@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping("findUser/{id}")
-    public ResponseEntity<UserRecord> getUserById(@PathVariable("id") int id) throws BlogNotFoundException {
+    public ResponseEntity<UserRecord> getUserById(@PathVariable("id") int id) throws UserNotFoundException {
         return new ResponseEntity<UserRecord>(userService.getUserById(id), HttpStatus.OK);
     }
 

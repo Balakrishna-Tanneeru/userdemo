@@ -1,8 +1,8 @@
 package com.bk.demo.Service;
 
 import com.bk.demo.Repository.UserRepository;
-import com.bk.demo.exception.BlogAlreadyExistsException;
-import com.bk.demo.exception.BlogNotFoundException;
+import com.bk.demo.exception.UserAlreadyExistsException;
+import com.bk.demo.exception.UserNotFoundException;
 import com.bk.demo.model.UserRecord;
 //import io.leangen.graphql.annotations.GraphQLArgument;
 //import io.leangen.graphql.annotations.GraphQLMutation;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 //@GraphQLApi
@@ -20,18 +19,18 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<UserRecord> getAllUsers() throws BlogNotFoundException {
+    public List<UserRecord> getAllUsers() throws UserNotFoundException {
         List<UserRecord> userRecords = new ArrayList<>();
         userRepository.findAll().forEach(userRecords::add);
         if((userRecords).isEmpty()) {
-            throw new BlogNotFoundException();
+            throw new UserNotFoundException();
         }
         return userRecords;
     }
 
     public void addUser(UserRecord userRecord) {
         if (userRepository.existsById(userRecord.getId())) {
-            throw new BlogAlreadyExistsException();
+            throw new UserAlreadyExistsException();
         }
         userRepository.save(userRecord);
     }
@@ -61,10 +60,10 @@ public class UserService {
     }
 
    // @Override
-    public UserRecord getUserById(int id) throws BlogNotFoundException {
+    public UserRecord getUserById(int id) throws UserNotFoundException {
         UserRecord user;
         if (userRepository.findById(id).isEmpty()) {
-            throw new BlogNotFoundException();
+            throw new UserNotFoundException();
         } else {
             user = userRepository.findById(id).get();
         }

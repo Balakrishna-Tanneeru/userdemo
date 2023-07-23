@@ -15,12 +15,12 @@ public class GlobalExceptionHandler {
     @Value(value = "${data.exception.message3}")
     private String message3;
 
-    @ExceptionHandler(value = BlogNotFoundException.class)
-    public ResponseEntity blogNotFoundException(BlogNotFoundException blogNotFoundException) {
+    @ExceptionHandler(value = UserNotFoundException.class)
+    public ResponseEntity userNotFoundException(UserNotFoundException userNotFoundException) {
         return new ResponseEntity<String>(message2, HttpStatus.NOT_FOUND);
     }
-    @ExceptionHandler(value = BlogAlreadyExistsException.class)
-    public ResponseEntity blogAlreadyExistsException(BlogAlreadyExistsException blogAlreadyExistsException) {
+    @ExceptionHandler(value = UserAlreadyExistsException.class)
+    public ResponseEntity userAlreadyExistsException(UserAlreadyExistsException userAlreadyExistsException) {
         return new ResponseEntity<String>(message1, HttpStatus.ALREADY_REPORTED);
     }
 
