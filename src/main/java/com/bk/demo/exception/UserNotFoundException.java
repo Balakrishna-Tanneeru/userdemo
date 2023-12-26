@@ -7,7 +7,7 @@ public class UserNotFoundException extends RuntimeException {
         super(message);
         this.message = message;
     }
-//user not found exception.
+//Hi GitHub
     public UserNotFoundException() {
     }
 }
