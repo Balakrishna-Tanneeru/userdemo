@@ -7,7 +7,7 @@ public class UserAlreadyExistsException extends RuntimeException {
         super(message);
         this.message = message;
     }
-
+//hii there
     public UserAlreadyExistsException() {
     }
 }
