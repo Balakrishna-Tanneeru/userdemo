@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 //Global exception class
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
+    //Anotation gets message value from application.properties file
     @Value(value = "${data.exception.message1}")
     private String message1;
     @Value(value = "${data.exception.message2}")
