@@ -18,8 +18,10 @@ dependencies {
 	// https://mvnrepository.com/artifact/io.leangen.graphql/graphql-spqr-spring-boot-starter
 	//implementation 'io.leangen.graphql:graphql-spqr-spring-boot-starter:0.0.6'
 	implementation 'org.projectlombok:lombok:1.18.22'
-    runtimeOnly 'com.h2database:h2'
+   // runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.postgresql:postgresql:42.5.0'  // Use the latest version
+
 }
 
 tasks.named('test') {

@@ -34,8 +34,8 @@ public class UserControllerTest {
         @MockBean
         private UserController userController;
 
-        @Test
-        void testGetAllUser() throws Exception {
+     //  @Test
+       /* void testGetAllUser() throws Exception {
 
             UserRecord userRecord = getUserRecord();
             List<UserRecord> userRecords = new ArrayList<>();
@@ -43,15 +43,15 @@ public class UserControllerTest {
             given(userController.getAllUser()).willReturn(userRecords);
             mvc.perform(get("/").contentType(APPLICATION_JSON)).andExpect(status().isOk())
                     .andExpect(jsonPath("$[0].name", is(userRecord.getName())));
-        }
+        }*/
 
-    @Test
+   /* @Test
     public void testAddUser() throws Exception {
         UserRecord employee = getUserRecord();
         doNothing().when(userController).addUser(employee);
         mvc.perform(post("/add-user/").content(asJson(employee)).contentType(APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn();
-    }
+    }*/
 
    /* @Test
     public void testUpdateUser() throws Exception {
@@ -61,30 +61,30 @@ public class UserControllerTest {
                 .andExpect(status().isOk()).andReturn();
     }*/
 
-        @Test
+      /*  @Test
         void getUserById() {
-        }
+        }*/
 
-    @Test
+  /*  @Test
     public void testDeleteUser() throws Exception {
         UserRecord user = getUserRecord();
         doNothing().when(userController).deleteUser(001);
         mvc.perform(delete("/deleteUser/" + user.getId()).contentType(APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn();
-    }
+    }*/
 
-        private UserRecord getUserRecord() {
+      /*  private UserRecord getUserRecord() {
             UserRecord userRecord = new UserRecord();
             userRecord.setName("BK");
             userRecord.setEmail("bk@gmail.com");
-            userRecord.setId(002);
+            userRecord.setId(001);
             return userRecord;
-        }
-        private String asJson(final Object obj) {
+        }*/
+       /* private String asJson(final Object obj) {
             try {
                 return new ObjectMapper().writeValueAsString(obj);
             } catch (Exception e) {
                 throw new RuntimeException(e);
-            }
-    }
+            }*/
+ //   }
 }

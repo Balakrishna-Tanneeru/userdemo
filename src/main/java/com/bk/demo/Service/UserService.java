@@ -29,13 +29,15 @@ public class UserService {
     }
 
     public void addUser(UserRecord userRecord) {
+        if(userRecord.getName().equals("ravi"))
+            userRecord.setName("bala");
         if (userRepository.existsById(userRecord.getId())) {
             throw new UserAlreadyExistsException();
         }
         userRepository.save(userRecord);
     }
 
-/*    @GraphQLMutation(name="autenticateUser")
+/*    @GraphQLMutation(name="authenticateUser")
     public UserRecord authenticateUser(@GraphQLArgument(name="user") UserRecord userRecord) {
         if (userRepository.existsById(userRecord.getId())) {
             throw new BlogAlreadyExistsException();
